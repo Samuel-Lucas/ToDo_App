@@ -4,7 +4,7 @@ namespace Todo.Domain.Repositories
 {
     public interface IToDoRepository
     {
-         void Create(ToDoItem todo);
-         void Update(ToDoItem todo);
+        void Create(ToDoItem todo);
+        void Update(ToDoItem todo);
     }
 }

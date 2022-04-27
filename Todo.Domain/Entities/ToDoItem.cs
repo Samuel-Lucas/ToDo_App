@@ -4,7 +4,7 @@ namespace Todo.Domain.Entities
 {
     public class ToDoItem : Entity
     {
-        public ToDoItem(string title, DateTime date, string user) : base(new Guid())
+        public ToDoItem(string title, string user, DateTime date) : base(default)
         {
             Title = title;
             Done = false;
