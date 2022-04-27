@@ -17,7 +17,10 @@ namespace Todo.Domain.Handlers
         
         public ICommandResult Handle(CreateToDoCommand command)
         {
-            throw new System.NotImplementedException();
+            // Fail Fast Validation
+            command.Validate();
+            if (command.Invalid)
+                return new GenericCommandResult(false, "Ops, parece que sua terefa está errada", command.Notifications);
         }
     }
 }
