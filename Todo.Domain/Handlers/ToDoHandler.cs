@@ -13,7 +13,7 @@ namespace Todo.Domain.Handlers
 
         public ToDoHandler(IToDoRepository repository)
         {
-            _repository = _repository;
+            _repository = repository;
         }
         
         public ICommandResult Handle(CreateToDoCommand command)

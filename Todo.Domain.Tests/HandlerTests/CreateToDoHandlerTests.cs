@@ -26,11 +26,11 @@ namespace Todo.Domain.Tests.HandlerTests
             Assert.AreEqual(_result.Sucesso, false);
         }
 
-        // [TestMethod]
-        // public void Dado_um_comando_valido_deve_criar_a_tarefa()
-        // {
-        //     _result = (GenericCommandResult)_handler.Handle(_validCommand);
-        //     Assert.AreEqual(_result.Sucesso, true);
-        // }
+        [TestMethod]
+        public void Dado_um_comando_valido_deve_criar_a_tarefa()
+        {
+            _result = (GenericCommandResult)_handler.Handle(_validCommand);
+            Assert.AreEqual(_result.Sucesso, true);
+        }
     }
 }
