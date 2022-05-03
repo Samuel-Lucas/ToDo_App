@@ -21,7 +21,7 @@ namespace Todo.Domain.Handlers
             // Fail Fast Validation
             command.Validate();
             if (command.Invalid)
-                return new GenericCommandResult(false, "Ops, parece que sua terefa está errada", command.Notifications);
+                return new GenericCommandResult(false, "Ops, parece que sua tarefa está errada", command.Notifications);
 
             // Gera o todo item
             var todo = new ToDoItem(command.Title, command.User, command.Date);

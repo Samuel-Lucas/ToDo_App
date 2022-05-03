@@ -11,7 +11,7 @@ namespace Todo.Domain.Commands
         {
         }
 
-        public CreateToDoCommand(string title, DateTime date, string user)
+        public CreateToDoCommand(string title, string user, DateTime date)
         {
             this.Title = title;
             this.Date = date;

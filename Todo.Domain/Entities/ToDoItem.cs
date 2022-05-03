@@ -4,7 +4,7 @@ namespace Todo.Domain.Entities
 {
     public class ToDoItem : Entity
     {
-        public ToDoItem(string title, string user, DateTime date) : base(default)
+        public ToDoItem(string title, string user, DateTime date)
         {
             Title = title;
             Done = false;
@@ -22,9 +22,9 @@ namespace Todo.Domain.Entities
             Done = true;
         }
 
-        public void MarkAsUnDone()
+        public void MarkAsUndone()
         {
-            Done = true;
+            Done = false;
         }
 
         public void UpdateTitle(string title)
