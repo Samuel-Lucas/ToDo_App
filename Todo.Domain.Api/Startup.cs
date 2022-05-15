@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Todo.Domain.Handlers;
 using Todo.Domain.Infra.Context;
+using Todo.Domain.Infra.Repositories;
 using Todo.Domain.Repositories;
 
 namespace Todo.Domain.Api
@@ -25,7 +26,7 @@ namespace Todo.Domain.Api
 
             services.AddDbContext<DataContext>(opt => opt.UseInMemoryDatabase("Database"));
 
-            // services.AddTransient<IToDoRepository, ToDoRepository>();
+            services.AddTransient<IToDoRepository, ToDoRepository>();
             services.AddTransient<ToDoHandler, ToDoHandler>();
         }
 
