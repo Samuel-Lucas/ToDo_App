@@ -44,10 +44,13 @@ namespace Todo.Domain.Handlers
             if (command.Invalid)
                 return new GenericCommandResult(false, "Ops, parece que sua tarefa está errada", command.Notifications);
 
+            // Recupera o ToDoItem
             var todo = _repository.GetById(command.Id, command.User);
 
+            // Altera o título
             todo.UpdateTitle(command.Title);
 
+            // Salva alteração no banco
             _repository.Update(todo);
 
             return new GenericCommandResult(true, "Tarefa salva !", todo);

@@ -1,15 +1,25 @@
 using System;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using Todo.Domain.Entities;
+using Todo.Domain.Infra.Context;
 using Todo.Domain.Repositories;
 
 namespace Todo.Domain.Infra.Repositories
 {
     public class ToDoRepository : IToDoRepository
     {
+        private readonly DataContext _context;
+
+        public ToDoRepository(DataContext context)
+        {
+            _context = context;
+        }
+
         public void Create(ToDoItem todo)
         {
-            throw new NotImplementedException();
+            _context.Todos.Add(todo);
+            _context.SaveChanges();
         }
 
         public IEnumerable<ToDoItem> GetAll(string user)
@@ -39,7 +49,8 @@ namespace Todo.Domain.Infra.Repositories
 
         public void Update(ToDoItem todo)
         {
-            throw new NotImplementedException();
+            _context.Entry(todo).State = EntityState.Modified;  // Objeto foi modificado, altera só o que foi mudado
+            _context.SaveChanges();
         }
     }
 }
