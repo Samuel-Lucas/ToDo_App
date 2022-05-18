@@ -43,6 +43,8 @@ namespace Todo.Domain.Handlers
             command.Validate();
             if (command.Invalid)
                 return new GenericCommandResult(false, "Ops, parece que sua tarefa está errada", command.Notifications);
+                
+            // Fazer função para pegar user
 
             // Recupera o ToDoItem
             var todo = _repository.GetById(command.Id, command.User);
