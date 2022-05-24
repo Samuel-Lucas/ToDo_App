@@ -13,8 +13,6 @@ namespace Todo.Domain.Api.Controllers
     [Route("v1/todos")]
     public class ToDoController : ControllerBase
     {
-        #region GET
-
         [HttpGet]
         [Route("")]
         public IEnumerable<ToDoItem> GetAll(
@@ -71,9 +69,6 @@ namespace Todo.Domain.Api.Controllers
             return repository.GetByPeriod("samuellucas", DateTime.Now.Date.AddDays(1), false);
         }
 
-        #endregion
-        #region POST
-
         [HttpPost]
         [Route("")]
         public GenericCommandResult Create(
@@ -84,9 +79,6 @@ namespace Todo.Domain.Api.Controllers
             return (GenericCommandResult)handler.Handle(command);
         }
 
-        #endregion
-        #region PUT
-
         [Route("")]
         [HttpPut]
         public GenericCommandResult Update(
@@ -94,7 +86,7 @@ namespace Todo.Domain.Api.Controllers
            [FromServices]ToDoHandler handler
         )
         {
-            command.User = User.Claims.FirstOrDefault(x => x.Type == "user_id")?.Value;
+            command.User = User.Claims.FirstOrDefault(x => x.Type == "user_guid")?.Value;
             // command.User = User.Claims.Where(x => x.Type == "user_id").Select(x => x.Value).FirstOrDefault();
             return (GenericCommandResult)handler.Handle(command);
         }
@@ -120,7 +112,5 @@ namespace Todo.Domain.Api.Controllers
             command.User = User.Claims.FirstOrDefault(x => x.Type == "user_id")?.Value;
             return (GenericCommandResult)handler.Handle(command);
         }
-
-        #endregion
     }
 }
